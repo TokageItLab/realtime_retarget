@@ -31,7 +31,7 @@
 #include "realtime_retarget_editor_plugin.h"
 
 #include "editor/plugins/animation_player_editor_plugin.h"
-#include "modules/realtime_retarget/src/retarget_utility.h"
+#include "../src/retarget_utility.h"
 #include "post_import_plugin_realtime_retarget.h"
 #include "scene/scene_string_names.h"
 
