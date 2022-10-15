@@ -33,7 +33,7 @@
 
 #include "editor/editor_plugin.h"
 #include "editor/editor_properties_array_dict.h"
-#include "modules/realtime_retarget/src/retarget_animation_player.h"
+#include "../src/retarget_animation_player.h"
 
 class RetargetAnimationPlayerEditor : public VBoxContainer {
 	GDCLASS(RetargetAnimationPlayerEditor, VBoxContainer);

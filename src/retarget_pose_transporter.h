@@ -31,7 +31,7 @@
 #ifndef RETARGET_POSE_TRANSPORTER_H
 #define RETARGET_POSE_TRANSPORTER_H
 
-#include "modules/realtime_retarget/src/retarget_profile.h"
+#include "retarget_profile.h"
 #include "scene/3d/skeleton_3d.h"
 
 class RetargetPoseTransporter : public Node {

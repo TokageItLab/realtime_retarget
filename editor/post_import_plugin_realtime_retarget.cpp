@@ -31,9 +31,9 @@
 #include "post_import_plugin_realtime_retarget.h"
 
 #include "editor/import/scene_import_settings.h"
-#include "modules/realtime_retarget/src/retarget_animation_player.h"
-#include "modules/realtime_retarget/src/retarget_profile.h"
-#include "modules/realtime_retarget/src/retarget_utility.h"
+#include "../src/retarget_animation_player.h"
+#include "../src/retarget_profile.h"
+#include "../src/retarget_utility.h"
 #include "scene/3d/skeleton_3d.h"
 #include "scene/animation/animation_player.h"
 #include "scene/resources/bone_map.h"
