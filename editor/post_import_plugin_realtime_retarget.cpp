@@ -167,7 +167,8 @@ void PostImportPluginRealtimeRetarget::internal_process(InternalImportCategory p
 						}
 					}
 					anim->set_meta(REALTIME_RETARGET_META, meta_dict);
-					lib->add_animation(anim->get_name() + "(" + retarget_profile->get_label_for_animation_name() + ")", anim);
+					rename_map.insert(anim->get_name(), "(" + retarget_profile->get_label_for_animation_name() + ")");
+					lib->add_animation(anim->get_name(), anim);
 				}
 
 				rap->add_animation_library("", lib);
@@ -175,6 +176,30 @@ void PostImportPluginRealtimeRetarget::internal_process(InternalImportCategory p
 			}
 		}
 	}
+}
+
+void PostImportPluginRealtimeRetarget::pre_process(Node *p_scene, const HashMap<StringName, Variant> &p_options) {
+	rename_map.clear();
+}
+
+void PostImportPluginRealtimeRetarget::post_process(Node *p_scene, const HashMap<StringName, Variant> &p_options) {
+	TypedArray<Node> nodes = p_scene->find_children("*", "RetargetAnimationPlayer");
+	while (nodes.size()) {
+		RetargetAnimationPlayer *rap = Object::cast_to<RetargetAnimationPlayer>(nodes.pop_back());
+		Ref<AnimationLibrary> lib = rap->get_animation_library("");
+		if (!lib.is_valid()) {
+			continue;
+		}
+		List<StringName> anims;
+		lib->get_animation_list(&anims);
+		for (const StringName &name : anims) {
+			if (rename_map.has(name)) {
+				lib->rename_animation(name, String(name) + rename_map.get(name));
+			}
+		}
+	}
+
+	rename_map.clear();
 }
 
 PostImportPluginRealtimeRetarget::PostImportPluginRealtimeRetarget() {
