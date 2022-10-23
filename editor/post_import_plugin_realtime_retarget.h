@@ -36,9 +36,14 @@
 class PostImportPluginRealtimeRetarget : public EditorScenePostImportPlugin {
 	GDCLASS(PostImportPluginRealtimeRetarget, EditorScenePostImportPlugin);
 
+	HashMap<String, String> rename_map;
+
 public:
 	virtual void get_internal_import_options(InternalImportCategory p_category, List<ResourceImporter::ImportOption> *r_options) override;
 	virtual void internal_process(InternalImportCategory p_category, Node *p_base_scene, Node *p_node, Ref<Resource> p_resource, const Dictionary &p_options) override;
+
+	virtual void pre_process(Node *p_scene, const HashMap<StringName, Variant> &p_options) override;
+	virtual void post_process(Node *p_scene, const HashMap<StringName, Variant> &p_options) override;
 
 	PostImportPluginRealtimeRetarget();
 };
