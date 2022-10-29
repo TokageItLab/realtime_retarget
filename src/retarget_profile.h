@@ -123,4 +123,28 @@ public:
 	~RetargetProfileLocalLimbsGlobalOthers();
 };
 
+class RetargetProfileAbsoluteFingersGlobalOthers : public RetargetProfile {
+	GDCLASS(RetargetProfileAbsoluteFingersGlobalOthers, RetargetProfile);
+
+public:
+	RetargetProfileAbsoluteFingersGlobalOthers();
+	~RetargetProfileAbsoluteFingersGlobalOthers();
+};
+
+class RetargetProfileAbsoluteLimbsGlobalOthers : public RetargetProfile {
+	GDCLASS(RetargetProfileAbsoluteLimbsGlobalOthers, RetargetProfile);
+
+public:
+	RetargetProfileAbsoluteLimbsGlobalOthers();
+	~RetargetProfileAbsoluteLimbsGlobalOthers();
+};
+
+class RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers : public RetargetProfile {
+	GDCLASS(RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers, RetargetProfile);
+
+public:
+	RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers();
+	~RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers();
+};
+
 #endif // RETARGET_PROFILE_H

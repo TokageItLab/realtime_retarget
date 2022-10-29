@@ -618,3 +618,212 @@ RetargetProfileLocalLimbsGlobalOthers::RetargetProfileLocalLimbsGlobalOthers() {
 
 RetargetProfileLocalLimbsGlobalOthers::~RetargetProfileLocalLimbsGlobalOthers() {
 }
+
+RetargetProfileAbsoluteFingersGlobalOthers::RetargetProfileAbsoluteFingersGlobalOthers() {
+	is_read_only = true;
+
+	label_for_animation_name = "Abs-Fingers Glb-Others";
+
+	absolute_transform_targets.resize(30);
+	absolute_transform_targets.write[0] = "LeftThumbMetacarpal";
+	absolute_transform_targets.write[1] = "LeftThumbProximal";
+	absolute_transform_targets.write[2] = "LeftThumbDistal";
+	absolute_transform_targets.write[3] = "LeftIndexProximal";
+	absolute_transform_targets.write[4] = "LeftIndexIntermediate";
+	absolute_transform_targets.write[5] = "LeftIndexDistal";
+	absolute_transform_targets.write[6] = "LeftMiddleProximal";
+	absolute_transform_targets.write[7] = "LeftMiddleIntermediate";
+	absolute_transform_targets.write[8] = "LeftMiddleDistal";
+	absolute_transform_targets.write[9] = "LeftRingProximal";
+	absolute_transform_targets.write[10] = "LeftRingIntermediate";
+	absolute_transform_targets.write[11] = "LeftRingDistal";
+	absolute_transform_targets.write[12] = "LeftLittleProximal";
+	absolute_transform_targets.write[13] = "LeftLittleIntermediate";
+	absolute_transform_targets.write[14] = "LeftLittleDistal";
+	absolute_transform_targets.write[15] = "RightThumbMetacarpal";
+	absolute_transform_targets.write[16] = "RightThumbProximal";
+	absolute_transform_targets.write[17] = "RightThumbDistal";
+	absolute_transform_targets.write[18] = "RightIndexProximal";
+	absolute_transform_targets.write[19] = "RightIndexIntermediate";
+	absolute_transform_targets.write[20] = "RightIndexDistal";
+	absolute_transform_targets.write[21] = "RightMiddleProximal";
+	absolute_transform_targets.write[22] = "RightMiddleIntermediate";
+	absolute_transform_targets.write[23] = "RightMiddleDistal";
+	absolute_transform_targets.write[24] = "RightRingProximal";
+	absolute_transform_targets.write[25] = "RightRingIntermediate";
+	absolute_transform_targets.write[26] = "RightRingDistal";
+	absolute_transform_targets.write[27] = "RightLittleProximal";
+	absolute_transform_targets.write[28] = "RightLittleIntermediate";
+	absolute_transform_targets.write[29] = "RightLittleDistal";
+
+	global_transform_targets.resize(26);
+	global_transform_targets.write[0] = "Root";
+	global_transform_targets.write[1] = "Hips";
+	global_transform_targets.write[2] = "Spine";
+	global_transform_targets.write[3] = "Chest";
+	global_transform_targets.write[4] = "UpperChest";
+	global_transform_targets.write[5] = "Neck";
+	global_transform_targets.write[6] = "Head";
+	global_transform_targets.write[7] = "LeftEye";
+	global_transform_targets.write[8] = "RightEye";
+	global_transform_targets.write[9] = "Jaw";
+	global_transform_targets.write[10] = "LeftShoulder";
+	global_transform_targets.write[11] = "LeftUpperArm";
+	global_transform_targets.write[12] = "LeftLowerArm";
+	global_transform_targets.write[13] = "LeftHand";
+	global_transform_targets.write[14] = "RightShoulder";
+	global_transform_targets.write[15] = "RightUpperArm";
+	global_transform_targets.write[16] = "RightLowerArm";
+	global_transform_targets.write[17] = "RightHand";
+	global_transform_targets.write[18] = "LeftUpperLeg";
+	global_transform_targets.write[19] = "LeftLowerLeg";
+	global_transform_targets.write[20] = "LeftFoot";
+	global_transform_targets.write[21] = "LeftToes";
+	global_transform_targets.write[22] = "RightUpperLeg";
+	global_transform_targets.write[23] = "RightLowerLeg";
+	global_transform_targets.write[24] = "RightFoot";
+	global_transform_targets.write[25] = "RightToes";
+}
+
+RetargetProfileAbsoluteFingersGlobalOthers::~RetargetProfileAbsoluteFingersGlobalOthers() {
+}
+
+RetargetProfileAbsoluteLimbsGlobalOthers::RetargetProfileAbsoluteLimbsGlobalOthers() {
+	is_read_only = true;
+
+	label_for_animation_name = "Abs-Limbs Glb-Others";
+
+	absolute_transform_targets.resize(44);
+	absolute_transform_targets.write[0] = "LeftUpperArm";
+	absolute_transform_targets.write[1] = "LeftLowerArm";
+	absolute_transform_targets.write[2] = "LeftHand";
+	absolute_transform_targets.write[3] = "LeftThumbMetacarpal";
+	absolute_transform_targets.write[4] = "LeftThumbProximal";
+	absolute_transform_targets.write[5] = "LeftThumbDistal";
+	absolute_transform_targets.write[6] = "LeftIndexProximal";
+	absolute_transform_targets.write[7] = "LeftIndexIntermediate";
+	absolute_transform_targets.write[8] = "LeftIndexDistal";
+	absolute_transform_targets.write[9] = "LeftMiddleProximal";
+	absolute_transform_targets.write[10] = "LeftMiddleIntermediate";
+	absolute_transform_targets.write[11] = "LeftMiddleDistal";
+	absolute_transform_targets.write[12] = "LeftRingProximal";
+	absolute_transform_targets.write[13] = "LeftRingIntermediate";
+	absolute_transform_targets.write[14] = "LeftRingDistal";
+	absolute_transform_targets.write[15] = "LeftLittleProximal";
+	absolute_transform_targets.write[16] = "LeftLittleIntermediate";
+	absolute_transform_targets.write[17] = "LeftLittleDistal";
+	absolute_transform_targets.write[18] = "RightUpperArm";
+	absolute_transform_targets.write[19] = "RightLowerArm";
+	absolute_transform_targets.write[20] = "RightHand";
+	absolute_transform_targets.write[21] = "RightThumbMetacarpal";
+	absolute_transform_targets.write[22] = "RightThumbProximal";
+	absolute_transform_targets.write[23] = "RightThumbDistal";
+	absolute_transform_targets.write[24] = "RightIndexProximal";
+	absolute_transform_targets.write[25] = "RightIndexIntermediate";
+	absolute_transform_targets.write[26] = "RightIndexDistal";
+	absolute_transform_targets.write[27] = "RightMiddleProximal";
+	absolute_transform_targets.write[28] = "RightMiddleIntermediate";
+	absolute_transform_targets.write[29] = "RightMiddleDistal";
+	absolute_transform_targets.write[30] = "RightRingProximal";
+	absolute_transform_targets.write[31] = "RightRingIntermediate";
+	absolute_transform_targets.write[32] = "RightRingDistal";
+	absolute_transform_targets.write[33] = "RightLittleProximal";
+	absolute_transform_targets.write[34] = "RightLittleIntermediate";
+	absolute_transform_targets.write[35] = "RightLittleDistal";
+	absolute_transform_targets.write[36] = "LeftUpperLeg";
+	absolute_transform_targets.write[37] = "LeftLowerLeg";
+	absolute_transform_targets.write[38] = "LeftFoot";
+	absolute_transform_targets.write[39] = "LeftToes";
+	absolute_transform_targets.write[40] = "RightUpperLeg";
+	absolute_transform_targets.write[41] = "RightLowerLeg";
+	absolute_transform_targets.write[42] = "RightFoot";
+	absolute_transform_targets.write[43] = "RightToes";
+
+	global_transform_targets.resize(12);
+	global_transform_targets.write[0] = "Root";
+	global_transform_targets.write[1] = "Hips";
+	global_transform_targets.write[2] = "Spine";
+	global_transform_targets.write[3] = "Chest";
+	global_transform_targets.write[4] = "UpperChest";
+	global_transform_targets.write[5] = "Neck";
+	global_transform_targets.write[6] = "Head";
+	global_transform_targets.write[7] = "LeftEye";
+	global_transform_targets.write[8] = "RightEye";
+	global_transform_targets.write[9] = "Jaw";
+	global_transform_targets.write[10] = "LeftShoulder";
+	global_transform_targets.write[11] = "RightShoulder";
+}
+
+RetargetProfileAbsoluteLimbsGlobalOthers::~RetargetProfileAbsoluteLimbsGlobalOthers() {
+}
+
+RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers::RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers() {
+	is_read_only = true;
+
+	label_for_animation_name = "Abs-Fingers Loc-Limbs Glb-Others";
+
+	absolute_transform_targets.resize(30);
+	absolute_transform_targets.write[0] = "LeftThumbMetacarpal";
+	absolute_transform_targets.write[1] = "LeftThumbProximal";
+	absolute_transform_targets.write[2] = "LeftThumbDistal";
+	absolute_transform_targets.write[3] = "LeftIndexProximal";
+	absolute_transform_targets.write[4] = "LeftIndexIntermediate";
+	absolute_transform_targets.write[5] = "LeftIndexDistal";
+	absolute_transform_targets.write[6] = "LeftMiddleProximal";
+	absolute_transform_targets.write[7] = "LeftMiddleIntermediate";
+	absolute_transform_targets.write[8] = "LeftMiddleDistal";
+	absolute_transform_targets.write[9] = "LeftRingProximal";
+	absolute_transform_targets.write[10] = "LeftRingIntermediate";
+	absolute_transform_targets.write[11] = "LeftRingDistal";
+	absolute_transform_targets.write[12] = "LeftLittleProximal";
+	absolute_transform_targets.write[13] = "LeftLittleIntermediate";
+	absolute_transform_targets.write[14] = "LeftLittleDistal";
+	absolute_transform_targets.write[15] = "RightThumbMetacarpal";
+	absolute_transform_targets.write[16] = "RightThumbProximal";
+	absolute_transform_targets.write[17] = "RightThumbDistal";
+	absolute_transform_targets.write[18] = "RightIndexProximal";
+	absolute_transform_targets.write[19] = "RightIndexIntermediate";
+	absolute_transform_targets.write[20] = "RightIndexDistal";
+	absolute_transform_targets.write[21] = "RightMiddleProximal";
+	absolute_transform_targets.write[22] = "RightMiddleIntermediate";
+	absolute_transform_targets.write[23] = "RightMiddleDistal";
+	absolute_transform_targets.write[24] = "RightRingProximal";
+	absolute_transform_targets.write[25] = "RightRingIntermediate";
+	absolute_transform_targets.write[26] = "RightRingDistal";
+	absolute_transform_targets.write[27] = "RightLittleProximal";
+	absolute_transform_targets.write[28] = "RightLittleIntermediate";
+	absolute_transform_targets.write[29] = "RightLittleDistal";
+
+	local_transform_targets.resize(14);
+	local_transform_targets.write[0] = "LeftUpperArm";
+	local_transform_targets.write[1] = "LeftLowerArm";
+	local_transform_targets.write[2] = "LeftHand";
+	local_transform_targets.write[3] = "RightUpperArm";
+	local_transform_targets.write[4] = "RightLowerArm";
+	local_transform_targets.write[5] = "RightHand";
+	local_transform_targets.write[6] = "LeftUpperLeg";
+	local_transform_targets.write[7] = "LeftLowerLeg";
+	local_transform_targets.write[8] = "LeftFoot";
+	local_transform_targets.write[9] = "LeftToes";
+	local_transform_targets.write[10] = "RightUpperLeg";
+	local_transform_targets.write[11] = "RightLowerLeg";
+	local_transform_targets.write[12] = "RightFoot";
+	local_transform_targets.write[13] = "RightToes";
+
+	global_transform_targets.resize(12);
+	global_transform_targets.write[0] = "Root";
+	global_transform_targets.write[1] = "Hips";
+	global_transform_targets.write[2] = "Spine";
+	global_transform_targets.write[3] = "Chest";
+	global_transform_targets.write[4] = "UpperChest";
+	global_transform_targets.write[5] = "Neck";
+	global_transform_targets.write[6] = "Head";
+	global_transform_targets.write[7] = "LeftEye";
+	global_transform_targets.write[8] = "RightEye";
+	global_transform_targets.write[9] = "Jaw";
+	global_transform_targets.write[10] = "LeftShoulder";
+	global_transform_targets.write[11] = "RightShoulder";
+}
+
+RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers::~RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers() {
+}

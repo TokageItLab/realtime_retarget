@@ -12,7 +12,7 @@ And worse, the `OverwriteAxis` option sets the joint axis (it is represented as 
 
 Especially when asset store resources are mixed in a project, the angles of those fingers are model-dependent and ambiguous. Fixing axes with `OverwriteAxis` and `FixSilhouette` option are not very effective for that case, so the finger animations easily can get messy.
 
-![Overwrite Axis Problem](./img/overwrite_axis_problem.gif)
+![Overwrite Axis Problem](./img/overwrite_axis_problem.webp)
 
 In the case of this image, retargeting an animation that rotates only the X axis of the source model, but does not respect the axes, it can cause unpredict rotation like fractures.
 
@@ -43,9 +43,13 @@ Use the absolute value from the initial transform.
 
 This is the same as the default animation in Godot 4. The key values include the `BoneRest`.
 
-To share animation, the model silhouette and the `BoneRest`s  must be matched completely. This means that the `OverwriteAxis` and `RemoveTracks/UnimportantPositions` options are required, but as noted above, there are many problems with them.
+To share animation, the model [joint rules](#joint-rules) must be matched.
 
-However, it may be beneficial to keep in mind that the `AbsoluteTransform` has the lowest calculation cost during playback. For enemy models that do not need to share animations, it is recommended to use the `AbsoluteTransform`.
+If only `RotationTrack` is used, the target model's silhouette can be made to closely match the source model as long as the [joint rules](#joint-rules) are unified. This means that `AbsoluteTransform` animations from T-pose model can be shared with A-pose model, even without `FixSilhouette` option.
+
+Although this may sound useful, using this extensively can cause distortions in the body shape. For example, if a model with an S-shaped spine shares an animation with a model with an I-shaped spine, the model's torso will be distorted.
+
+Moreover, if `PositionTrack` is included, it will cause horrible transformation of the body shape, as shown above.
 
 ### Local Transform
 
@@ -54,6 +58,8 @@ Uses the relative value from the `BoneRest`.
 This is the same as the default animation in Godot 3. The key values do not include the `BoneRest` since the value is relative to the `BoneRest`.
 
 To share animation, the model silhouette and [joint rules](#joint-rules) must be matched.
+
+Both `AbsoluteTransform` and `LocalTransform` respect the joint orientation, but the difference is whether the animation is absolute such that it overrides `BoneRest`, or relative to `BoneRest`.
 
 ### Global Transform
 
@@ -86,8 +92,16 @@ After implementing this custom module, you can find a `RealTimeRetarget` section
 		- Import and mark the bone transform tracks for the fingers in `SkeletonProfileHumanoid` as `LocalTransform` and the other bone transform tracks as `GlobalTransform`
 	- RetargetProfileLocalLimbsGlobalOthers
 		- Import and mark the bone transform tracks for the limbs in `SkeletonProfileHumanoid` as `LocalTransform` and the other bone transform tracks as `GlobalTransform`
+	- RetargetProfileAbsoluteFingersGlobalOthers
+		- Import and mark the bone transform tracks for the fingers in `SkeletonProfileHumanoid` as `AbsoluteTransform` and the other bone transform tracks as `GlobalTransform`
+	- RetargetProfileAbsoluteLimbsGlobalOthers
+		- Import and mark the bone transform tracks for the limbs in `SkeletonProfileHumanoid` as `AbsoluteTransform` and the other bone transform tracks as `GlobalTransform`
+	- RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers
+		- Import and mark the bone transform tracks for the fingers in `SkeletonProfileHumanoid` as `AbsoluteTransform`, the limbs in `SkeletonProfileHumanoid` as `LocalTransform` and the other bone transform tracks as `GlobalTransform`
 
-As you can see from the above profiles, `TransformType` can be specified for each bone and can be mixed. For example, there is a case that in order to bend fingers neatly, `LocalTransform` is used for fingers, and `GlobalTransform` is used for the ambiguous joints close to the trunk. In this case, it is recommended to use `RetargetProfileLocalFingersGlobalOthers` or `RetargetProfileLocalLimbsGlobalOthers` with the joint rules matched.
+As you can see from the above profiles, `TransformType` can be specified for each bone and can be mixed. For example, there is a case that in order to bend fingers neatly, `AbsoluteTransform` or `LocalTransform` is used for fingers, and `GlobalTransform` is used for the ambiguous joints close to the trunk. In this case, it is recommended to use the profile which contain specifications for "Fingers" or "Limbs" with the joint rules matched.
+
+![Transform Types](./img/transform_types.webp)
 
 The animations extracted for `RealtimeRetarget` will have `TransformType` information as `Metadata`. To read the `Metadata` and apply the transforms properly, these animations must be played back in `RetargetAnimationPlayer` or `RetargetAnimationTree`.
 
@@ -113,7 +127,7 @@ By the way, the bone transform tracks not specified in `RetargetProfile` are tre
 
 ## Joint Rules
 
-To use `LocalTransform` effectively, it is necessary to define joint rules. For example, define restrictions such as +Y rotation to roll the arm outside, +X rotation to bend the arm, etc.
+To use `AbsoluteTransform` and `LocalTransform` effectively, it is necessary to define joint rules. For example, define restrictions such as +Y rotation to roll the arm outside, +X rotation to bend the arm, etc.
 
 If the joint rules are unified in your project, there is no problem. However, the joint rules are not clearly defined as a file format, such as glTF. It is one way to determine the joint rules for each bone and summarize them as a list. However, that is not recommended considering the understandability and the maintainability.
 
@@ -121,10 +135,31 @@ Instead, I recommend the rule that *the +Y axis is pointed from the parent joint
 
 This rule is compatible with Blender's bone format since in Blender's default settings will point the bone's +Y axis implicitly from the `Head` to the `Tail`. Also, you can check if the Joint Rules are correct by selecting multiple bones and rotating them to the +X direction in the local/independent mode, and see if the joints bend to the inside of the body.
 
-![Checking Joint Rules](./img/checking_axes.gif)
+![Checking Joint Rules](./img/checking_axes.webp)
 
 Moreover, this rule is welcomed by IK. This is because it makes it easy to determine the prioritized axis and direction of bending for chained joints.
 
-Well, we can say that if the `OverwriteAxis` option is enabled, the model will generally adopt this rule, but note that the original axis of rotation will not be respected. If we truly want to respect the original axis of rotation, we need to snap and rotate the axis every 90 degrees and visually check it. Besides, as I mentioned above, there are many problems with the `OverwriteAxis` option, so if you want to use `LocalTransform`, I recommend that you be aware of the axis rules and set them manually.
+Well, we can say that if the `OverwriteAxis` option is enabled, the model will generally adopt this rule, but note that the original axis of rotation will not be respected. If we truly want to respect the original axis of rotation, we need to snap and rotate the axis every 90 degrees and visually check it. Besides, as I mentioned above, there are many problems with the `OverwriteAxis` option, so if you want to use `AbsoluteTransform` or `LocalTransform`, I recommend that you be aware of the axis rules and set them manually.
 
 I think that it is the right way to go to develop a Blender add-on such as rest validator which checks if the joint rules are correct or not, but that should be provided separately from this module.
+
+## Summary
+
+This is a summary of the animation sharing way and its problems.
+
+- To share animation
+	- Between models with different joint rules
+		- OverwriteAxis option
+			- The silhouette must be unified
+			- The original `BoneRest`s are discarded
+			- The joint orientations are not respected (looks like a bone fracture)
+		- GlobalTransform
+			- The silhouette must be unified
+			- The joint orientations are not respected (looks like a bone fracture)
+	- Between models with same joint rules
+		- AbsoluteTransform
+			- `PositionTrack` cannot be used well
+			- Not recommended for use on the spine (may cause distortion)
+		- LocalTransform
+			- The silhouette must be unified
+			- The BoneRest difference is clearly visible in the animation
