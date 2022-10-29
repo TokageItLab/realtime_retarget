@@ -12,11 +12,14 @@ def get_doc_classes():
         "RetargetAnimationTree",
         "RetargetPoseTransporter",
         "RetargetProfile",
-        "RetargetProfileAbsoluteAll",
         "RetargetProfileGlobalAll",
         "RetargetProfileLocalAll",
+        "RetargetProfileAbsoluteAll",
         "RetargetProfileLocalFingersGlobalOthers",
         "RetargetProfileLocalLimbsGlobalOthers",
+        "RetargetProfileAbsoluteFingersGlobalOthers",
+        "RetargetProfileAbsoluteLimbsGlobalOthers",
+        "RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers",
         "RetargetUtility",
     ]
 

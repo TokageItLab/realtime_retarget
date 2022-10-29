@@ -52,6 +52,9 @@ void initialize_realtime_retarget_module(ModuleInitializationLevel p_level) {
 		GDREGISTER_CLASS(RetargetProfileAbsoluteAll);
 		GDREGISTER_CLASS(RetargetProfileLocalFingersGlobalOthers);
 		GDREGISTER_CLASS(RetargetProfileLocalLimbsGlobalOthers);
+		GDREGISTER_CLASS(RetargetProfileAbsoluteFingersGlobalOthers);
+		GDREGISTER_CLASS(RetargetProfileAbsoluteLimbsGlobalOthers);
+		GDREGISTER_CLASS(RetargetProfileAbsoluteFingersLocalLimbsGlobalOthers);
 		GDREGISTER_CLASS(RetargetAnimationPlayer);
 		GDREGISTER_CLASS(RetargetAnimationTree);
 		GDREGISTER_CLASS(RetargetPoseTransporter);
