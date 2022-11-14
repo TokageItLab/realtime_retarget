@@ -1,5 +1,7 @@
 # Godot Realtime Retarget
 
+Godot Realtime Retarget module needs to override the virtual functions used by the Godot editor, so it has to be implemented as a custom module. To install a custom module, you need to build the Godot. Please refer to this [document](https://docs.godotengine.org/en/stable/development/cpp/custom_modules_in_cpp.html#compiling-a-module-externally).
+
 ## Why is this module needed?
 
 Godot 4 has implemented a static retargeting system in the post importer. However, the following several options may cause problems.
